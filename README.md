@@ -49,12 +49,15 @@ Here, the first argument is the IP address of the gateway and the second argumen
 
 We can now see that the MAC address for the gateway in the victim's ARP table has been updated to our attacker's MAC address. (The IP address of the attacker is  192.168.0.110)
 
+![attacker](./images/image4.png)
 
 
 
 
 ## Sniff and Spoof RST Packet
 The next step of the attack is to sniff the packets sent from the server to the client. Since we have successfully spoofed the ARP table of the victim, all the packets are now being sent through our device. Hence we can simply filter the packets where the destination IP is our target victim.
+
+![victim](./images/image7.png)
 
 
 Here, we intercept a packet sent from the server 103.139.234.187
@@ -89,12 +92,14 @@ Again, the gateway IP and the victim's IP address are sent as the command line a
 
 If the attack is successful, the victim receives the RST packet before the next packet sent by the server and closes the connection. Since the connection is closed, any more packets sent by the server will be responded with an RST packet by the client and hence the connection will be closed on the server's end too. 
 
+![success](./images/image6.png)
 
 
 We can observe that the video playback stops on the victim's end, which shows that our attack was successful.
 
 If we keep our program running, it will respond any packets with an RST packet. Hence the client will not be able to re-establish another connection with the server.
 
+![success](./images/image2.png)
 
 
 
